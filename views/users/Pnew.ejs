@@ -7,15 +7,21 @@
     <title>New User Placeholder</title>
 </head>
 <body>
+    <h1>New User</h1>
     <form action="/user" method="post">
 
         <label for="userName">
-            <input type="text" name="userName" id="userName">
+            <input type="text" name="userName" id="userName" placeholder="User Name">
         </label>
 
         <label for="userEmail">
-            <input type="text" name="userEmail" id="userEmail">
+            <input type="email" name="userEmail" id="userEmail" placeholder="email">
         </label>
+
+        <label for="userPassword">
+            <input type="password" name="userPassword" id="userPassword" placeholder="Password">
+        </label>
+
         <label for="SEND">
             <input type="submit" value="SEND">
         </label>

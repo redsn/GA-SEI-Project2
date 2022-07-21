@@ -13,6 +13,7 @@ UserPath: *** An array of chosen events, pushed in || (Array)
 
 const newUser = new Schema ({
     userName: { type: String, required: true},
+    userPassword: {type: String, required: true},
     userEmail: { type: String, required: true},
     userPath: { type: Array}
 },{timestamps: true})

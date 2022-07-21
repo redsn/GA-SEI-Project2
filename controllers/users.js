@@ -10,10 +10,13 @@ const User = require('..//models/user');
 
 // INDEX // --> Main Profile Page, render ejs
 userRouter.get('/', (req,res) => {
-    res.send('Hi')
+    res.render('./users/Pindex.ejs')
 })
 
 // NEW // --> New Profle Page, render ejs
+userRouter.get('/new', (req,res) => {
+    res.render('./users/Pnew.ejs');
+})
 
 // DELETE // --> Delete profile, [delete] to route
 

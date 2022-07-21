@@ -9,6 +9,9 @@ const Page = require('../models/page');
 const User = require('..//models/user');
 
 // INDEX // --> Main Profile Page, render ejs
+userRouter.get('/', (req,res) => {
+    res.send('Hi')
+})
 
 // NEW // --> New Profle Page, render ejs
 

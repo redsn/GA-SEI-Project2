@@ -23,6 +23,9 @@ userRouter.get('/new', (req,res) => {
 // UPDATE // --> Chains off EDIT route, [put] to route
 
 // CREATE // --> Create profile, [posts] to route
+userRouter.post('/', (req,res) => {
+    res.send(req.body);
+})
 
 // EDIT // --> Edit Profile, render ejs
 

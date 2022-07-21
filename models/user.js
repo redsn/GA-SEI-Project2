@@ -15,4 +15,8 @@ const newUser = new Schema ({
     userName: { type: String, required: true},
     userEmail: { type: String, required: true},
     userPath: { type: Array}
-},{timestamps})
+},{timestamps: true})
+
+const User = mongoose.model('User', newUser);
+
+module.exports = User;

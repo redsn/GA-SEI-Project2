@@ -18,4 +18,8 @@ const newPage = new Schema ({
     belongsTo: { type: String, required: true},
     createdBy: { type: String, required: true},
     private: { type: Boolean, default: false} 
-}, {timestamps})
+}, {timestamps: true})
+
+const Page = mongoose.model('Page', newPage);
+
+module.exports = Page;

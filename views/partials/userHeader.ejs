@@ -1,8 +1,8 @@
 <header>
     <nav>
         <% if(user) { %>
-            <a href="/">Logged In</a>
-            <a href="/">Profile</a>
+            <a href="/" aria-disabled="true">Logged In</a>
+            <a href="/user/<%=user._id%>">Profile</a>
         <% } else { %>
             <a href="/">Not logged In</a>
             <a href="/">No profile here</a>

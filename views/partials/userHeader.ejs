@@ -1,6 +1,16 @@
 <header>
+    <nav>
+        <% if(user) { %>
+            <a href="/">Logged In</a>
+            <a href="/">Profile</a>
+        <% } else { %>
+            <a href="/">Not logged In</a>
+            <a href="/">No profile here</a>
+        <% } %>
     <ul>
         <li><a href="/">To Main</a></li>
+        <li><a href="/user/login">Login</a></li>
     </ul>
+    </nav>
 </header>
     <main>

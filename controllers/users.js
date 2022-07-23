@@ -1,6 +1,7 @@
 ////// Dependencies /////
 const express = require('express');
 const bcrypt = require('bcrypt');
+const SALT = 10;
 
 ///// Router /////
 const userRouter = express.Router();
@@ -10,12 +11,17 @@ const Page = require('../models/page');
 const User = require('..//models/user');
 
 // LOG IN //
+// GET//
 userRouter.get('/login', (req,res) => {
-    res.send('placeholder');
+    res.render('./users/login.ejs')
+})
+// POST //
+userRouter.post('/login', (req,res) => {
+    res.send(req.body);
 })
 
 // INDEX // --> Main Profile Page, render ejs
-userRouter.get('/', (req,res) => {
+userRouter.get('/profile', (req,res) => {
     res.render('./users/index.ejs')
 })
 
@@ -32,19 +38,36 @@ userRouter.delete('/:idx', (req,res) => {
 })
 
 // UPDATE // --> Chains off EDIT route, [put] to route
-useRouter.put('/:idx', (req,res) => {
+userRouter.put('/:idx', (req,res) => {
     User.findByIdAndUpdate(req.body.idx, (err, updateUser) => {
         res.redirect(`/user/${req.params.id}`)
     })
 })
 
 // CREATE // --> Create profile, [posts] to route
-userRouter.post('/', (req,res) => {
-    User.create(req.body, (err, user) => {
-        console.log(req.body, req.body._id)
-        res.send(req.body)
+/// BCRYPT WIP ///
+userRouter.post('/register', (req,res) => {
+    if(req.body.userPassword < 6){
+        return res.render('./user/new.ejs', {err:'Please enter a valid password'})
+    }
+    const hash = bcrypt.hashSync(req.body.userPassword, bcrypt.genSaltSync(SALT));
+    req.body.userPassword = hash;
+    User.create(req.body, (err, newUser) => {
+        if(err){
+            res.render('./user/new.ejs', {err: 'Login data invalid'})
+        } else {
+            req.session.newUser = newUser._id
+            console.log(newUser._id)
+            res.send(req.body)
+        }
     })
 })
+// userRouter.post('/register', (req,res) => {
+//     User.create(req.body, (err, user) => {
+//         console.log(req.body, req.body._id)
+//         res.redirect(``)
+//     })
+// })
 
 // EDIT // --> Edit Profile, render ejs
 userRouter.get('/:idx/edit', (req,res) => {
@@ -54,6 +77,11 @@ userRouter.get('/:idx/edit', (req,res) => {
 })
 
 // SHOW // --> Shows **** STORIES *****, render ejs. NOT YET IMPLEMENTED
+userRouter.get('/:idx', (req,res) => {
+    User.findById(req.params.idx, (err, showUser) => {
+       res.render('./user/show.ejs', {user: showUser}); 
+    })
+})
 
 
 

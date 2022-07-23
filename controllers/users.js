@@ -17,7 +17,12 @@ userRouter.get('/login', (req,res) => {
 })
 // POST //
 userRouter.post('/login', (req,res) => {
-    res.send(req.body);
+    User.findOne({ email: req.body.userEmail }, '+password', (err, findUser) => {
+        if(!findUser) return res.send('invalid');
+        if(!bcrypt.compareSync(req.body.userPassword, findUser.userPassword)) return res.send('invalid');
+        req.session.user = findUser._id
+        res.redirect('/')
+    })
 })
 
 // INDEX // --> Main Profile Page, render ejs
@@ -56,9 +61,9 @@ userRouter.post('/register', (req,res) => {
         if(err){
             res.render('./user/new.ejs', {err: 'Login data invalid'})
         } else {
-            req.session.newUser = newUser._id
-            console.log(newUser._id)
-            res.send(req.body)
+            req.session.newUser = newUser._id;
+            // res.send(req.body)
+            res.redirect(`/user/${newUser._id}`)
         }
     })
 })
@@ -79,7 +84,7 @@ userRouter.get('/:idx/edit', (req,res) => {
 // SHOW // --> Shows **** STORIES *****, render ejs. NOT YET IMPLEMENTED
 userRouter.get('/:idx', (req,res) => {
     User.findById(req.params.idx, (err, showUser) => {
-       res.render('./user/show.ejs', {user: showUser}); 
+       res.render('./users/show.ejs', {user: showUser}); 
     })
 })
 

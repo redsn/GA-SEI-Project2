@@ -17,7 +17,8 @@ const PORT = 4000; /// Change with .env var later
 // MAIN PAGE // *** WIP
 app.get('/', (req,res) => {
     // res.send('Here I am, once again. I\'m torn into pieces')
-    res.render('./server/PLACEHOLDER.ejs');
+    // res.render('./server/PLACEHOLDER.ejs');
+    res.render('./server/place.ejs');
 })
 ///////////////
 

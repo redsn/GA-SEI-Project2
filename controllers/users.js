@@ -10,12 +10,12 @@ const User = require('..//models/user');
 
 // INDEX // --> Main Profile Page, render ejs
 userRouter.get('/', (req,res) => {
-    res.render('./users/Pindex.ejs')
+    res.render('./users/index.ejs')
 })
 
 // NEW // --> New Profle Page, render ejs
 userRouter.get('/new', (req,res) => {
-    res.render('./users/Pnew.ejs');
+    res.render('./users/new.ejs');
 })
 
 // DELETE // --> Delete profile, [delete] to route
@@ -24,7 +24,10 @@ userRouter.get('/new', (req,res) => {
 
 // CREATE // --> Create profile, [posts] to route
 userRouter.post('/', (req,res) => {
-    res.send(req.body);
+    User.create(req.body, (err, user) => {
+        console.log(req.body, req.body._id)
+        res.send(req.body)
+    })
 })
 
 // EDIT // --> Edit Profile, render ejs

@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const pageRouter = require('./controllers/pages')
 const userRouter = require('./controllers/users')
+const session = require('express-session');
 
 // Usage
 const app = express();
@@ -12,7 +13,30 @@ app.use(express.urlencoded({extended: false}));
 
 // Server Config
 const PORT = 4000; /// Change with .env var later
-//////// mongodb connections here later /////////
+const { DATABASE_CONNECT, secret } = process.env;
+mongoose.connect(DATABASE_CONNECT)
+const db = mongoose.connection;
+db.on('error', (err) => {
+    console.error(`Connection Error via MongoDB: ${err.message}`)
+})
+db.on('connected', () => {
+    console.log(`Connection established`)
+})
+db.on('disconnected', () => {
+    console.log('disconnected')
+})
+////////////////
+
+//Middleware//
+app.use(async (req,res, next) => {
+    if(req.session && req.session.user){
+        const user = await require('./models/user').findById(req.session.user);
+        res.locals.user = user;
+    } else {
+        res.locals.user = null;
+    }
+    next();
+})
 
 // MAIN PAGE // *** WIP
 app.get('/', (req,res) => {

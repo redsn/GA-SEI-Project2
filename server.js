@@ -58,6 +58,7 @@ app.get('/', (req,res) => {
 //////// Mount Routers ///////
 app.use('/user', userRouter) // 'user' route is temp. TBD 
 app.use('/pages', pageRouter) // Placeholder, not yet implemented
+app.use('/book', bookRouter);
 
 /// Listener ///
 app.listen(PORT, console.log(`Application loaded on port: ${PORT}`));

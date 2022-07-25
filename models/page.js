@@ -17,7 +17,7 @@ const newPage = new Schema ({
     eventTimer: { type: Number, required: true},
     belongsTo: { type: String},
     createdBy: { type: String, required: true},
-    content: { type: String} ,
+    content: { type: String},
     private: { type: Boolean, default: false} 
 }, {timestamps: true})
 

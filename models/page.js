@@ -15,8 +15,9 @@ private: createdBy = userName OR Anonymous || (Boolean)
 const newPage = new Schema ({
     eventName: { type: String, required: true},
     eventTimer: { type: Number, required: true},
-    belongsTo: { type: String, required: true},
+    belongsTo: { type: String},
     createdBy: { type: String, required: true},
+    content: { type: String} ,
     private: { type: Boolean, default: false} 
 }, {timestamps: true})
 

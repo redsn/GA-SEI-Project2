@@ -1,4 +1,12 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
+<h1>Pages Index</h1>
+<a href="/pages/new">New Page</a>
+
+<% pages.forEach( page => { %>
+    <a href="/pages/<%= page._id%>"><h1><%= page.eventName %></h1></a>
+<%})%>
+
+
 
 <%- include('../partials/userFooter') %>

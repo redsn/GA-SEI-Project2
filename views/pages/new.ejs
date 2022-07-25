@@ -1,4 +1,11 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
-
+<form action="/pages" method="post">
+    <input type="text" name="eventName" id="eventName" placeholder="Name of Event">
+    <input type="number" name="eventTimer" id="eventTimer" placeholder="Time Elapsed">
+    <input type="text" name="createdBy" id="createdBy" placeholder="Name of Creator">
+    <input type="checkbox" name="private" id="private">
+    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+    <input type="submit" value="Send">
+</form>
 <%- include('../partials/userFooter') %>

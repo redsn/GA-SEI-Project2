@@ -1,15 +1,15 @@
 <header>
     <nav>
         <% if(user) { %>
-            <a href="/" aria-disabled="true">Logged In</a>
-            <a href="/user/<%=user._id%>">Profile</a>
+            <a href="/" aria-disabled="true">Welcome, <%= user.userName %></a>
+            <a href="/user/home">Profile</a>
         <% } else { %>
-            <a href="/">Not logged In</a>
-            <a href="/">No profile here</a>
+            <a href="/user/login">Log-In</a>
+            Profile
         <% } %>
     <ul>
-        <li><a href="/">To Main</a></li>
-        <li><a href="/user/login">Login</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/pages">Pages</a></li>
     </ul>
     </nav>
 </header>

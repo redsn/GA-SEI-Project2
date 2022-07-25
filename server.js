@@ -34,11 +34,10 @@ app.use(session({
     saveUninitialized: false
 }))
 
-app.use(async function(req,res, next){
-    if(req.session && req.session.user){
+app.use(async function(req, res, next){
+    if (req.session && req.session.user) {
         const user = await require('./models/user').findById(req.session.user);
         res.locals.user = user;
-        console.log(user);
         console.log(res.locals.user);
     } else {
         res.locals.user = null;
@@ -48,8 +47,6 @@ app.use(async function(req,res, next){
 
 // MAIN PAGE // *** WIP
 app.get('/', (req,res) => {
-    // res.send('Here I am, once again. I\'m torn into pieces')
-    // res.render('./server/PLACEHOLDER.ejs');
     res.render('./server/place.ejs');
 })
 ///////////////
@@ -60,7 +57,7 @@ app.get('/', (req,res) => {
 
 //////// Mount Routers ///////
 app.use('/user', userRouter) // 'user' route is temp. TBD 
-// app.use('/user', pageRouter) // Placeholder, not yet implemented
+app.use('/pages', pageRouter) // Placeholder, not yet implemented
 
 /// Listener ///
 app.listen(PORT, console.log(`Application loaded on port: ${PORT}`));

@@ -18,8 +18,11 @@ userRouter.get('/login', (req,res) => {
 // POST //
 userRouter.post('/login', (req,res) => {
     User.findOne({ email: req.body.userEmail }, '+password', (err, findUser) => {
-        if(!findUser) return res.send('invalid');
-        if(!bcrypt.compareSync(req.body.userPassword, findUser.userPassword)) return res.send('invalid');
+        if(!findUser) return res.send(req.body);
+        console.log(`Req: ${req.body.userPassword}, Database: ${findUser.userPassword}, hashcheck: ${bcrypt.compareSync(req.body.userPassword, findUser.userPassword)}`)
+        console.log(`Req: ${req.body.userPassword}, Database: ${bcrypt.hashSync(req.body.userPassword, bcrypt.genSaltSync(SALT))}`)
+        if(!bcrypt.compareSync(req.body.userPassword, findUser.userPassword)){
+        return res.send('bcryinvalid')};
         req.session.user = findUser._id
         res.redirect('/')
     })
@@ -52,9 +55,10 @@ userRouter.put('/:idx', (req,res) => {
 // CREATE // --> Create profile, [posts] to route
 /// BCRYPT WIP ///
 userRouter.post('/register', (req,res) => {
-    if(req.body.userPassword < 6){
+    if(req.body.userPassword.length < 6){
         return res.render('./user/new.ejs', {err:'Please enter a valid password'})
     }
+    // console.log(req.body.userPassword)
     const hash = bcrypt.hashSync(req.body.userPassword, bcrypt.genSaltSync(SALT));
     req.body.userPassword = hash;
     User.create(req.body, (err, newUser) => {
@@ -62,8 +66,8 @@ userRouter.post('/register', (req,res) => {
             res.render('./user/new.ejs', {err: 'Login data invalid'})
         } else {
             req.session.newUser = newUser._id;
-            // res.send(req.body)
-            res.redirect(`/user/${newUser._id}`)
+            console.log(newUser)
+            res.redirect(`/user/home`)
         }
     })
 })
@@ -82,9 +86,10 @@ userRouter.get('/:idx/edit', (req,res) => {
 })
 
 // SHOW // --> Shows **** STORIES *****, render ejs. NOT YET IMPLEMENTED
-userRouter.get('/:idx', (req,res) => {
-    User.findById(req.params.idx, (err, showUser) => {
-       res.render('./users/show.ejs', {user: showUser}); 
+userRouter.get('/home', (req,res) => {
+    User.findById(req.session.user, (err, showUser) => {
+        // console.log(req.session.user);
+       res.render('./users/profile.ejs', {user: showUser}); 
     })
 })
 

@@ -6,7 +6,7 @@ const pageRouter = express.Router();
 
 ///// Models /////
 const Page = require('../models/page');
-const User = require('..//models/user');
+const User = require('../models/user');
 
 /// logged in? ///
 // pageRouter.use(function(req,res,next){
@@ -26,7 +26,7 @@ pageRouter.get('/', (req,res) => {
 
 //NEW//
 pageRouter.get('/new', (req,res) => {
-    res.render('./pages/new.ejs')
+    res.render('./pages/new.ejs', {id: req.session.user})
 })
 
 //DELETE//

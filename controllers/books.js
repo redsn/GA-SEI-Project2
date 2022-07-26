@@ -17,9 +17,9 @@ bookRouter.get('/', (req,res) => {
 })
 
 /// NEW ///
-bookRouter.get('/new', (req,res)  => {
+bookRouter.get('/new/:idx', (req,res)  => {
     Page.find({}, (err, allPages) => {
-        res.render('./books/combine.ejs', {pages: allPages})
+        res.render('./books/combine.ejs', {pages: allPages, part: req.params.idx})
     })
 })
 

@@ -1,7 +1,10 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
+
+<% console.log(pages.length) %>
+<% let start = 0; let end = 0;%>
 <% pages.forEach(page => {  %>
     <h1><%= page.eventName %></h1>
-    
+
 <%})%>
 <%- include('../partials/userFooter') %>

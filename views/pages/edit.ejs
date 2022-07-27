@@ -14,8 +14,6 @@
         <textarea name="content" id="content" cols="30" rows="10"><%= page.content %></textarea>
     </label>
 
-    <% console.log(user) %>
-    <% console.log(page) %>
     <!-- UPDATE functionality. Conditional for session check and 'public' check -->
 
     <% if(page.belongsTo === user || page.belongsTo === 'public') {%>
@@ -24,7 +22,7 @@
     </label>
     <% } else { %>
     <label for="submit">
-        <p class="warn">Something went wrong. Write a letter to your congressmen</p>
+        <p class="warn">You cannot edit this entry</p>
     <input type="submit" value="Update" disabled>
     <% } %>
 

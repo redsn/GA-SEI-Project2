@@ -10,6 +10,7 @@ const User = require('../models/user');
 const Book = require('../models/book');
 
 /// INDEX ///
+///// GET for book root
 bookRouter.get('/', (req,res) => {
     Book.find({}, (err, allBooks) => {
         res.render('./books/index.ejs', {book: allBooks})
@@ -17,9 +18,10 @@ bookRouter.get('/', (req,res) => {
 })
 
 /// NEW ///
+///// get for pages browsing /////// should probably combine with page index instead
 bookRouter.get('/new/:idx', (req,res)  => {
     Page.find({}, (err, allPages) => {
-        res.render('./books/combine.ejs', {pages: allPages, part: req.params.idx, user: req.session.user})
+        res.render('./pages/newindex.ejs', {pages: allPages, part: req.params.idx, user: req.session.user})
     })
 })
 

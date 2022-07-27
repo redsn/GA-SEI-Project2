@@ -45,18 +45,8 @@ userRouter.get('/new', (req,res) => {
 })
 
 // DELETE // --> Delete profile, [delete] to route
-userRouter.delete('/:idx', (req,res) => {
-    User.findByIdAndDelete(req.body.idx, (err, deleteUser) => {
-        res.redirect('/');
-    })
-})
 
 // UPDATE // --> Chains off EDIT route, [put] to route
-userRouter.put('/:idx', (req,res) => {
-    User.findByIdAndUpdate(req.body.idx, (err, updateUser) => {
-        res.redirect(`/user/${req.params.id}`)
-    })
-})
 
 // CREATE // --> Create profile, [posts] to route
 /// BCRYPT WIP ///
@@ -85,11 +75,6 @@ userRouter.post('/register', (req,res) => {
 // })
 
 // EDIT // --> Edit Profile, render ejs
-userRouter.get('/:idx/edit', (req,res) => {
-    User.findById(req.params.idx, (err, editUser) => {
-        res.render('./users/edit.ejs');
-    })
-})
 
 // SHOW // --> Shows **** STORIES *****, render ejs. NOT YET IMPLEMENTED
 userRouter.get('/home', (req,res) => {

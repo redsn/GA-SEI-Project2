@@ -19,9 +19,42 @@ bookRouter.get('/', (req,res) => {
 /// NEW ///
 bookRouter.get('/new/:idx', (req,res)  => {
     Page.find({}, (err, allPages) => {
-        res.render('./books/combine.ejs', {pages: allPages, part: req.params.idx})
+        res.render('./books/combine.ejs', {pages: allPages, part: req.params.idx, user: req.session.user})
     })
 })
+
+// DELETE //
+
+// UPDATE //
+//////  Initial adding pages /////
+// bookRouter.put('/new/addpage/:idx', (req,res) => {
+//     User.findByIdAndUpdate(req.session.user, (err, userLog) => {
+//         userLog.userPath.push(req.params.idx);
+//     })
+// })
+
+bookRouter.post('/new/addpage/:idx', (req,res) => {
+    console.log(req.params.idx)
+    User.findByIdAndUpdate(req.session.user,{
+        $push: {
+            userPath: req.params.idx
+        }
+    },
+    (err, user)=> {
+        if(err){
+            console.log(err)
+        } else {
+            res.redirect(req.originalUrl)
+        }
+    }
+    )
+})
+
+// CREATE //
+
+// EDIT //
+
+// SHOW //
 
 
 /// EXPORTS ///

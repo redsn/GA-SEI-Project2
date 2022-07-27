@@ -20,6 +20,12 @@
         <div>
             <%= pages[i].content %>
         </div>
+        <form action="/book/new/addpage/<%= pages[i]._id %>" method="post">
+            <label for="submit">
+            Add this page
+            <input type="submit" value="+">
+            </label>
+        </form>
     </details>
 <%}%>
 

@@ -30,6 +30,11 @@ pageRouter.get('/new', (req,res) => {
 })
 
 //DELETE//
+pageRouter.delete('/:idx', (req,res) => {
+    Page.findByIdAndDelete(req.params.idx, (err, deletePage) => {
+        res.redirect('/pages/')
+    })
+})
 
 //UPDATE//
 pageRouter.put('/:idx', (req,res) => {

@@ -1,9 +1,25 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 
+<!-- defines start and end points for number of entries displayed on a page -->
 <% let start = ((part - 1)*10); let end = ((part * 10) - 1);%>
-<% pages.forEach(page => {  %>
-    <h1><%= page.eventName %></h1>
 
-<%})%>
+<!-- defines page point for every 10 entries, may be adjusted later-->
+<% let totalPages = Math.ceil(pages.length / 10)%>
+
+<!-- checks for end limit to avoid errors -->
+<% if(end > pages.length){ %>
+    <% end = pages.length - 1 %>
+<%} %>
+<!-- Start of entry generation -->
+<% for (i = start; i < end +1; i++){ %>
+    <h1><%= pages[i].eventName %></h1>
+<%}%>
+
+<!-- Page loop, for total entries-->
+<% for (i = 1; i < totalPages + 1; i++) { %>
+    <a href="/book/new/<%=i%>"><%=i%></a>
+<%}%>
+<p>Page <%= part %></p>
+
 <%- include('../partials/userFooter') %>

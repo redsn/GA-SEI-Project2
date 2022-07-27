@@ -13,10 +13,10 @@ private: createdBy = userName OR Anonymous || (Boolean)
 */
 
 const newPage = new Schema ({
-    eventName: { type: String, required: true},
-    eventTimer: { type: Number, required: true},
+    eventName: { type: String, required: true}, // now Chapter
+    eventTimer: { type: Number }, // may be removed
     belongsTo: { type: String}, // IN USE
-    createdBy: { type: String, required: true},
+    createdBy: { type: String, required: true}, // now Author
     content: { type: String},
     private: { type: Boolean, default: false} 
 }, {timestamps: true})

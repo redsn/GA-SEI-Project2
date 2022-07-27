@@ -1,4 +1,31 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
-
+<form action="/pages/<%= page._id %>?_method=PUT" method="post">
+    <label for="eventName">
+        Name of Chapter:
+    <input type="text" name="eventName" id="eventName" value="<%=page.eventName%>">
+    </label>
+    <label for="createdBy">
+        Author:
+        <input type="text" name="createdBy" id="createdBy" value="<%= page.createdBy %>">
+    </label>
+    <label for="content">
+        Content:
+        <textarea name="content" id="content" cols="30" rows="10"><%= page.content %></textarea>
+    </label>
+    <% if(!page.belongsTo || page.belongsTo !== 'public'){%>
+    <label for="submit">
+        <p class="warn">You do not have permission to edit this entry</p>
+    <input type="submit" value="Update" disabled>
+    </label>
+    <%} else if(page.belongsTo === user || page.belongsTo === 'public') {%>
+    <label for="submit">
+        <input type="submit" value="Update">
+    </label>
+    <% } else { %>
+    <label for="submit">
+        <p class="warn">Something went wrong. Write a letter to your congressmen</p>
+    <input type="submit" value="Update" disabled>
+    <% } %>
+</form>
 <%- include('../partials/userFooter') %>

@@ -32,6 +32,15 @@ pageRouter.get('/new', (req,res) => {
 //DELETE//
 
 //UPDATE//
+pageRouter.put('/:idx', (req,res) => {
+    Page.findByIdAndUpdate(
+        req.params.idx,
+        req.body,
+        {new:true}, (err, updatePage)  => {
+            res.redirect(`/pages/${req.params.idx}`)
+        }
+    )
+})
 
 //CREATE//
 pageRouter.post('/', (req,res) => {
@@ -51,6 +60,11 @@ pageRouter.post('/', (req,res) => {
 })
 
 //EDIT//
+pageRouter.get('/:idx/edit', (req,res) => {
+    Page.findById(req.params.idx, (err, editPage) => {
+        res.render('./pages/edit.ejs', {page: editPage, user: req.session.user})
+    })
+})
 
 //SHOW//
 pageRouter.get('/:idx', (req,res) => {

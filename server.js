@@ -11,6 +11,8 @@ const session = require('express-session');
 // Usage
 const app = express();
 app.use(express.urlencoded({extended: false}));
+app.use(express.static('public'));
+app.use(methodOverride('_method'));
 
 // Server Config
 const PORT = 4000; /// Change with .env var later
@@ -34,8 +36,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
-app.use(express.static('public'));
-app.use(methodOverride('_method'));
+
 
 app.use(async function(req, res, next){
     if (req.session && req.session.user) {

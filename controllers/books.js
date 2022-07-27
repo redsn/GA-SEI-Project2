@@ -18,12 +18,13 @@ bookRouter.get('/', (req,res) => {
 })
 
 /// NEW ///
-///// get for pages browsing /////// should probably combine with page index instead
+///// get for pages browsing /////// Will be used for saving favorites
 bookRouter.get('/new/:idx', (req,res)  => {
     Page.find({}, (err, allPages) => {
         res.render('./pages/newindex.ejs', {pages: allPages, part: req.params.idx, user: req.session.user})
     })
 })
+
 
 // DELETE //
 

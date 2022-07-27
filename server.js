@@ -34,6 +34,8 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
+app.use(express.static('public'));
+app.use(methodOverride('_method'));
 
 app.use(async function(req, res, next){
     if (req.session && req.session.user) {

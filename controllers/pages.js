@@ -35,6 +35,12 @@ pageRouter.get('/new', (req,res) => {
 
 //CREATE//
 pageRouter.post('/', (req,res) => {
+    if(!req.session.user){
+        req.body.belongsTo = 'public';
+        req.body.createdBy = 'An Author'
+    } else {
+        req.body.belongsTo = req.session.user
+    }
     Page.create(req.body, (err, newPage) => {
         if(err){
             res.send('something went wrong');

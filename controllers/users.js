@@ -15,9 +15,15 @@ const User = require('..//models/user');
 userRouter.get('/login', (req,res) => {
     res.render('./users/login.ejs')
 })
+// LOG OUT //
+userRouter.get('/logout', (req,res) => {
+    req.session.destroy(() => {
+        res.redirect('/user/login');
+    })
+})
 // POST //
 userRouter.post('/login', (req,res) => {
-    User.findOne({ email: req.body.userEmail }, '+password', (err, findUser) => {
+    User.findOne({ userEmail: req.body.userEmail }, '+password', (err, findUser) => {
         if(!findUser) return res.send(req.body);
         console.log(`Req: ${req.body.userPassword}, Database: ${findUser.userPassword}, hashcheck: ${bcrypt.compareSync(req.body.userPassword, findUser.userPassword)}`)
         console.log(`Req: ${req.body.userPassword}, Database: ${bcrypt.hashSync(req.body.userPassword, bcrypt.genSaltSync(SALT))}`)
@@ -58,7 +64,7 @@ userRouter.post('/register', (req,res) => {
     if(req.body.userPassword.length < 6){
         return res.render('./user/new.ejs', {err:'Please enter a valid password'})
     }
-    // console.log(req.body.userPassword)
+    console.log(req.body.userPassword)
     const hash = bcrypt.hashSync(req.body.userPassword, bcrypt.genSaltSync(SALT));
     req.body.userPassword = hash;
     User.create(req.body, (err, newUser) => {

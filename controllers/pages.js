@@ -74,7 +74,7 @@ pageRouter.get('/:idx/edit', (req,res) => {
 //SHOW//
 pageRouter.get('/:idx', (req,res) => {
     Page.findById(req.params.idx, (err, showPage) => {
-        res.render('./pages/show.ejs', {page: showPage})
+        res.render('./pages/show.ejs', {page: showPage, user: req.session.user})
     })
 })
 

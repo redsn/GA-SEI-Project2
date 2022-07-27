@@ -21,6 +21,8 @@
             <%= pages[i].content %>
         </div>
         <form action="/book/new/addpage/<%= pages[i]._id %>" method="post">
+            <!-- <input type="text" name="name" id="name" disabled class="hideMe" value="<%=pages[i].eventName%>">
+            <input type="text" name="page" id="page" disabled class="hideMe" value="<%= part %>"> -->
             <label for="submit">
             Add this page
             <input type="submit" value="+">

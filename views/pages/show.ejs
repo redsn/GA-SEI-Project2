@@ -7,12 +7,7 @@
 <!-- DELETE Same as update -->
 <form action="/pages/<%= page._id %>?_method=DELETE" method="post">
 
-    <% if(!page.belongsTo || page.belongsTo !== 'public'){%>
-        <label for="submit">
-            <p class="warn">You do not have permission to delete this entry</p>
-        <input type="submit" value="DELETE" disabled>
-        </label>
-        <%} else if(page.belongsTo === user || page.belongsTo === 'public') {%>
+        <%if(page.belongsTo === user || page.belongsTo === 'public') {%>
         <label for="submit">
             <input type="submit" value="DELETE">
         </label>

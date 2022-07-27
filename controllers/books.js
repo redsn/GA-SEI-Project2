@@ -27,14 +27,9 @@ bookRouter.get('/new/:idx', (req,res)  => {
 
 // UPDATE //
 //////  Initial adding pages /////
-// bookRouter.put('/new/addpage/:idx', (req,res) => {
-//     User.findByIdAndUpdate(req.session.user, (err, userLog) => {
-//         userLog.userPath.push(req.params.idx);
-//     })
-// })
-
 bookRouter.post('/new/addpage/:idx', (req,res) => {
-    console.log(req.params.idx)
+    // console.log(req.params.idx)
+    console.log(req.body)
     User.findByIdAndUpdate(req.session.user,{
         $push: {
             userPath: req.params.idx
@@ -44,7 +39,7 @@ bookRouter.post('/new/addpage/:idx', (req,res) => {
         if(err){
             console.log(err)
         } else {
-            res.redirect(req.originalUrl)
+            res.redirect('/book/new/1')
         }
     }
     )

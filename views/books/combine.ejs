@@ -11,9 +11,16 @@
 <% if(end > pages.length){ %>
     <% end = pages.length - 1 %>
 <%} %>
+
 <!-- Start of entry generation -->
 <% for (i = start; i < end +1; i++){ %>
     <h1><%= pages[i].eventName %></h1>
+    <details>
+        Created By: <%=pages[i].createdBy %>
+        <div>
+            <%= pages[i].content %>
+        </div>
+    </details>
 <%}%>
 
 <!-- Page loop, for total entries-->

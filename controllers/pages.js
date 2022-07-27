@@ -18,9 +18,9 @@ const User = require('../models/user');
 // })
 
 //INDEX//
-pageRouter.get('/', (req,res) => {
-    Page.find({}, (err, findPage) => {
-        res.render('./pages/index.ejs', { pages: findPage})
+pageRouter.get('/all/:idx', (req,res) => {
+    Page.find({}, (err, allPages) => {
+        res.render('./pages/newindex.ejs', {pages: allPages, part: req.params.idx, user: req.session.user})
     })
 })
 

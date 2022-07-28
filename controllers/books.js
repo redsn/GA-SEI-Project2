@@ -44,8 +44,8 @@ bookRouter.get('/init', (req,res) => {
 })
 
 // NEW //
-bookRouter.get('/new/', (req,res) => {
-    res.render('')
+bookRouter.get('/new', (req,res) => {
+    res.render('./books/new.ejs')
 })
 bookRouter.get('/new/:idx', (req,res) => {
     User.findById(req.session.user, (err, userFavs) => {
@@ -86,11 +86,12 @@ bookRouter.post('/new/addpage/:idx', (req,res) => {
 
 // CREATE //
 bookRouter.post('/init', (req,res) => {
+    req.body.belongsTo = req.session.user;
     Book.create(req.body, (err, newBook) => {
         if(err){
             res.send('An error has occured. Please reconnect to this site')
         } else {
-            res.redirect('/')
+            res.redirect('/book/new/1')
         }
     })
 })

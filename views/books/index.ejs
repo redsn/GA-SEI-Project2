@@ -1,7 +1,8 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
+<a href="book/init">Start a new Book</a>
 <% book.forEach(books => { %>
-    <a href="book/<%= book._id %>"><h1><%=  book.title %></h1></a>
+    <a href="book/<%= books._id %>"><h1><%=  books.title %></h1></a>
 <%})%>
 <% if (user) { %>
 <a href="book/collection/">My Collection</a>

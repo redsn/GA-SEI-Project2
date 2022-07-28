@@ -7,6 +7,8 @@ const newBook = new Schema ({
     pages: { type: Array },
     choices: { type: Array },
     private: { type: Boolean, default: true},
+    belongsTo: { type: String },
+    complete: { type: Boolean, default: false}, 
     results: { type: Array }
 })
 

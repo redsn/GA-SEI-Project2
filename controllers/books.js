@@ -34,7 +34,19 @@ bookRouter.get('/collection', (req,res) => {
     })
 })
 
+/// INDEX : Book Parameter ///
+bookRouter.get('/init', (req,res) => {
+    if(req.session.user){
+    res.render('./books/bookparam.ejs')
+    } else {
+        res.send('no');
+    }
+})
+
 // NEW //
+bookRouter.get('/new/', (req,res) => {
+    res.render('')
+})
 bookRouter.get('/new/:idx', (req,res) => {
     User.findById(req.session.user, (err, userFavs) => {
         if(err) {
@@ -73,6 +85,15 @@ bookRouter.post('/new/addpage/:idx', (req,res) => {
 })
 
 // CREATE //
+bookRouter.post('/init', (req,res) => {
+    Book.create(req.body, (err, newBook) => {
+        if(err){
+            res.send('An error has occured. Please reconnect to this site')
+        } else {
+            res.redirect('/')
+        }
+    })
+})
 
 // EDIT //
 

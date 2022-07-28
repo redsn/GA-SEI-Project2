@@ -1,0 +1,25 @@
+<%- include('../partials/userHead') %>
+<%- include('../partials/userHeader') %>
+
+<h1> Book Parameters</h1>
+
+<form action="/book/init" method="post">
+
+    <label for="title">
+        Title:
+        <input type="text" name="title" id="title" placeholder="Name of Book">
+    </label>
+
+    <label for="pagesMax">
+        Number of Pages:
+        <input type="range" name="pagesMax" id="pagesMax" min="3" max="10">
+    </label>
+
+    <label for="private">
+        Make this Public ?
+        <input type="checkbox" name="private" id="private">
+    </label>
+
+</form>
+
+<%- include('../partials/userFooter') %>

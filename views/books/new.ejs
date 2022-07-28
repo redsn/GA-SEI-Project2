@@ -1,9 +1,17 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <h1>Making a Story</h1>
-<h3>Page <%=place%></h3>
+<h3>Page <%=place%> of <%=book.pagesMax%></h3>
 <div>
-    
+    <label for="pages">
+        <select name="pages" id="pages">
+            <% page.forEach(search => { %>
+                <% if(search.belongsTo === session ){ %>
+                    <option value="<%=search._id%>"><%=search.entryName%></option>
+                <% } %>
+            <% })> %>
+        </select>
+    </label>
 
 </div>
 

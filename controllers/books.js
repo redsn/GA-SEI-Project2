@@ -43,6 +43,30 @@ bookRouter.get('/init', (req,res) => {
     }
 })
 
+///// Generating Book ///// Edit ?
+bookRouter.get('/create/:bookID/:pageNumber', (req,res) => {
+    if(req.session.user){
+    User.findById(req.session.user, (err, currentUser) => {
+        Page.find({}, (err, allPages) => {
+            Book.findById(req.params.bookID, (err, currentBook) => {
+                if(err) {
+                    res.redirect('/')
+                } else {
+                    res.render('./books/new.ejs', {
+                        //// OBJECTS TO PASS ////
+                        book: currentBook,
+                        place: req.params.pageNumber,
+                        user: currentUser,
+                        page: allPages,
+                        session: req.session.user
+                    })
+                }
+            })
+        })
+    })
+    }
+})
+
 // NEW //
 bookRouter.get('/new', (req,res) => {
     res.render('./books/new.ejs')
@@ -50,6 +74,7 @@ bookRouter.get('/new', (req,res) => {
 bookRouter.get('/new/:idx', (req,res) => {
     User.findById(req.session.user, (err, userFavs) => {
         if(err) {
+            console.log('error with new/:idx?')
             res.redirect('/') // build a 404 that redirects
         } else {
             Page.find({}, (err, pages) => {
@@ -91,7 +116,7 @@ bookRouter.post('/init', (req,res) => {
         if(err){
             res.send('An error has occured. Please reconnect to this site')
         } else {
-            res.redirect('/book/new/1')
+            res.redirect(`/book/create/${newBook._id}/1`)
         }
     })
 })

@@ -18,10 +18,15 @@ bookRouter.get('/', (req,res) => {
 })
 
 /// NEW ///
-///// get for pages browsing /////// Will be used for saving favorites
-bookRouter.get('/new/:idx', (req,res)  => {
-    Page.find({}, (err, allPages) => {
-        res.render('./pages/newindex.ejs', {pages: allPages, part: req.params.idx, user: req.session.user})
+///// get for pages browsing ///////
+bookRouter.get('/new', (req,res) => {
+    User.findById(req.session.user, (err, userFavs) => {
+        if(err) {
+            res.redirect('/')
+        } else {
+        res.render('books/new.ejs', {
+            user: userFavs
+        })}
     })
 })
 
@@ -29,20 +34,18 @@ bookRouter.get('/new/:idx', (req,res)  => {
 // DELETE //
 
 // UPDATE //
-//////  Initial adding pages /////
+//////  Initial adding pages ///// :::: RENAME TO FAVORITES [UPDATE]
 bookRouter.post('/new/addpage/:idx', (req,res) => {
-    // console.log(req.params.idx)
-    console.log(req.body)
     User.findByIdAndUpdate(req.session.user,{
         $push: {
-            userPath: req.params.idx
+            favorites: req.params.idx
         }
     },
     (err, user)=> {
         if(err){
             console.log(err)
         } else {
-            res.redirect('/book/new/1')
+            res.redirect('/pages/all/1')
         }
     }
     )

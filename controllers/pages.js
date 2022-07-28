@@ -32,7 +32,7 @@ pageRouter.get('/new', (req,res) => {
 //DELETE//
 pageRouter.delete('/:idx', (req,res) => {
     Page.findByIdAndDelete(req.params.idx, (err, deletePage) => {
-        res.redirect('/pages/')
+        res.redirect('/pages/all/1')
     })
 })
 
@@ -59,7 +59,7 @@ pageRouter.post('/', (req,res) => {
         if(err){
             res.send('something went wrong');
         } else {
-            res.redirect('/pages')
+            res.redirect('/pages/all/1')
         }
     })
 })

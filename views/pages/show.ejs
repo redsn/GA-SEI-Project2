@@ -1,7 +1,8 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <h1><%= page.eventName %></h1>
-<%= page %>
+<h4>Written By: <%= page.createdBy %></h4>
+<p><%= page.content %></p>
 <a href="/pages/<%= page._id %>/edit">Edit this Entry</a>
 
 <!-- DELETE Same as update -->

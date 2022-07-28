@@ -1,6 +1,7 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 
+<a href="/pages/new">Make a new Page</a>
 <!-- defines start and end points for number of entries displayed on a page -->
 <% let start = ((part - 1)*10); let end = ((part * 10) - 1);%>
 
@@ -21,7 +22,7 @@
             <!-- <input type="text" name="name" id="name" disabled class="hideMe" value="<%=pages[i].eventName%>">
             <input type="text" name="page" id="page" disabled class="hideMe" value="<%= part %>"> -->
             <label for="submit">
-            Add to favorites
+            Add to Library
             <input type="submit" value="+">
             </label>
         </form>
@@ -32,7 +33,7 @@
 <!-- Page loop, for total entries-->
 <br/>
 <% for (i = 1; i < totalPages + 1; i++) { %>
-    <a href="/book/new/<%=i%>"><%=i%></a>
+    <a href="/pages/all/<%=i%>"><%=i%></a>
 <%}%>
 <p>Page <%= part %></p>
 

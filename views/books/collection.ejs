@@ -1,0 +1,27 @@
+<%- include('../partials/userHead') %>
+<%- include('../partials/userHeader') %>
+<h1>My Collection</h1>
+<div>
+    <p><%= user.userPath %></p>
+    <h2>My Library</h2>
+    <% page.forEach(find => { %>
+        <% if(find.belongsTo === session){ %>
+            <div>
+            <h3><%= find.eventName %></h3>
+            <h5>by <%= find.createdBy %></h5>
+            <div>
+        <% } %>
+    <% }) %>
+    <h2>Additions</h2>
+    <% page.forEach(find => { %>
+        <% if(user.favorites.includes(find._id)){ %>
+            <div>
+            <h3><%= find.eventName %></h3>
+            <h5>by <%= find.createdBy %></h5>
+            <div>
+        <% } %>
+    <% }) %>
+
+</div>
+
+<%- include('../partials/userFooter') %>

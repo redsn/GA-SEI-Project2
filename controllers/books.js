@@ -17,19 +17,40 @@ bookRouter.get('/', (req,res) => {
     })
 })
 
-/// NEW ///
-///// get for pages browsing ///////
-bookRouter.get('/new', (req,res) => {
+//// INDEX : My Collection ////
+bookRouter.get('/collection', (req,res) => {
     User.findById(req.session.user, (err, userFavs) => {
         if(err) {
-            res.redirect('/')
+            res.redirect('/') // build a 404 that redirects
         } else {
-        res.render('books/new.ejs', {
-            user: userFavs
-        })}
+            Page.find({}, (err, pages) => {
+                res.render('books/collection.ejs', {
+                    session: req.session.user,
+                    user: userFavs,
+                    page: pages
+                })
+            })
+        }
     })
 })
 
+// NEW //
+bookRouter.get('/new/:idx', (req,res) => {
+    User.findById(req.session.user, (err, userFavs) => {
+        if(err) {
+            res.redirect('/') // build a 404 that redirects
+        } else {
+            Page.find({}, (err, pages) => {
+                res.render('books/new.ejs', {
+                    place: req.params.idx,
+                    session: req.session.user,
+                    user: userFavs,
+                    page: pages
+                })
+            })
+        }
+    })
+})
 
 // DELETE //
 

@@ -3,5 +3,7 @@
 <% book.forEach(books => { %>
     <a href="book/<%= book._id %>"><h1><%=  book.title %></h1></a>
 <%})%>
-<a href="book/new/">Make a new Book</a>
+<% if (user) { %>
+<a href="book/collection/">My Collection</a>
+<% } %>
 <%- include('../partials/userFooter') %>

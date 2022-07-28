@@ -1,7 +1,6 @@
 <header>
     <nav>
         <% if(user) { %>
-            <a href="/" aria-disabled="true">Welcome, <%= user.userName %></a>
             <a href="/user/home">Profile</a>
             <a href="/user/logout">Log-Out</a>
         <% } else { %>

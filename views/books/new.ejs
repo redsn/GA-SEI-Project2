@@ -1,18 +1,40 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <h1>Making a Story</h1>
-<h3>Page <%=place%> of <%=book.pagesMax%></h3>
 <div>
-    <label for="pages">
-        <select name="pages" id="pages">
-            <% page.forEach(search => { %>
-                <% if(search.belongsTo === session ){ %>
-                    <option value="<%=search._id%>"><%=search.entryName%></option>
-                <% } %>
-            <% })> %>
-        </select>
-    </label>
+    <% for(i=0; i < book.pagesMax; i++){ %>
+        <div>
+        <h3>Page <%= i + 1 %> of <%= book.pagesMax %></h3>
 
+            <% let storage = user.favorites %>
+            <% page.forEach( result => { %>
+
+                <% if(storage.includes(result.id)){ %>
+                    <h4>Name of Page</h4>
+                    
+                    <select name="pages" id="pages">
+                    <option value="<%=result.id%>"><%=result.eventName%></option>
+                    </select>
+
+                    <h4>Choice A</h4>
+                    <input type="text" name="choiceAText" id="choiceAText">
+                    <h4>Choice A Result</h4>
+                    <select name="choiceA" id="choiceA">
+                    <option value="<%=result.id%>"><%=result.eventName%></option>
+                    </select>
+
+                    <h4>Choice B</h4>
+                    <input type="text" name="choiceBText" id="choiceBText">
+                    <h4>Choice B Result</h4>
+                    <select name="choiceB" id="choiceB">
+                    <option value="<%=result.id%>"><%=result.eventName%></option>
+                    </select>
+
+                <% } %>
+            <% }) %>
+
+    </div>
+    <% } %>
 </div>
 
 <%- include('../partials/userFooter') %>

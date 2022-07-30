@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const newStory = new Schema({
+    bookID: { type: String },
     title: { type: String },
     pagesMax: { type: Number },
     pages: { type: Array },

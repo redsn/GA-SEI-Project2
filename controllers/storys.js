@@ -13,6 +13,13 @@ const Story = require('../models/story');
 // INDEX //
 
 // NEW //
+storyRouter.post('/new', (err, pass) => {
+    if(err){
+        res.redirect('/');
+    } else {
+        console.log(pass)
+    }
+})
 
 // DELETE //
 

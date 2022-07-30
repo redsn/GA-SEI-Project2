@@ -6,6 +6,10 @@
     <p>Has been sucessfully bound and saved to your library</p>
 
     <h3> Would you like to make this publically available?</h3>
+    <form action="/story/new" method="post">
+        <input type="text" name="bookID" id="bookID" value="<%=book.id%>">
+        <input type="submit" value="TEST">
+    </form>
 </div>
 
 <%- include('../partials/userFooter') %>

@@ -23,3 +23,7 @@ const Story = require('../models/story');
 // EDIT //
 
 // SHOW //
+
+
+// EXPORT //
+module.exports = storyRouter;

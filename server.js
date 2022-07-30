@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const pageRouter = require('./controllers/pages')
 const userRouter = require('./controllers/users')
 const bookRouter = require('./controllers/books')
+const storyRouter = require('./controllers/storys')
 const session = require('express-session');
 
 // Usage
@@ -63,6 +64,7 @@ app.get('/', (req,res) => {
 app.use('/user', userRouter); // 'user' route is temp. TBD 
 app.use('/pages', pageRouter); // Placeholder, not yet implemented
 app.use('/book', bookRouter); // 'book' route
+app.use('/story', storyRouter); // 'story' route
 
 /// Listener ///
 app.listen(PORT, console.log(`Application loaded on port: ${PORT}`));

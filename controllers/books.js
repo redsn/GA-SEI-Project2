@@ -36,10 +36,12 @@ bookRouter.get('/collection', (req,res) => {
 
 // CONFIRM BOOK //
 bookRouter.get('/confirm/:id', (req,res) => {
-    Book.findById(req.body.id, (err, confirmBook) => {
+    console.log(req.params.id);
+    Book.findById(req.params.id, (err, confirmBook) => {
         if(err){
             res.redirect('/') /// BUILD A 404
         } else {
+            console.log(confirmBook);
             res.render('./books/confirm.ejs', {
                 book: confirmBook
             })
@@ -100,9 +102,7 @@ bookRouter.put('/create/:bookID/:pageNumber', (req,res) => {
         } else if(req.params.pageNumber < pass.pagesMax) {
             res.redirect(`/book/create/${req.params.bookID}/${parseInt(req.params.pageNumber) + 1}`)
         } else {
-            res.redirect(`/book/confirm/${pass.id}`, {
-                book: pass
-            })
+            res.redirect(`/book/confirm/${pass.id}`)
         }
     }
     )

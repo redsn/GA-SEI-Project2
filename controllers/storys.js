@@ -13,12 +13,14 @@ const Story = require('../models/story');
 // INDEX //
 
 // NEW //
-storyRouter.post('/new', (err, pass) => {
-    if(err){
-        res.redirect('/');
-    } else {
-        console.log(pass)
-    }
+storyRouter.post('/new', (req,res) => {
+    Story.create(req.body, (err, newStory) => {
+        if(err){
+            res.redirect('/');
+        } else {
+            res.redirect(`/story/final/${newStory.id}/1`)
+        }
+    })
 })
 
 // DELETE //

@@ -38,15 +38,10 @@ storyRouter.post('/new', (req,res) => {
 
 // UPDATE //
 storyRouter.put('/final/:storyID/:page', (req,res)=> {
-    if(req.body.complete === 'on'){
-        req.body.complete = true
-    };
-    if(req.body.complete === 'off'){
-        req.body.complete = false
-    }
+    req.body.end = !!req.body.end
     Story.findByIdAndUpdate(req.params.storyID, {
-        complete: req.body.complete,
         $push: {
+            end: req.body.end,
             pages: req.body.pages,
             choiceA: req.body.choiceA,
             choiceAText: req.body.choiceAText || 'Plot Hole',

@@ -23,6 +23,11 @@
         <input type="text" name="choiceBText" id="choiceBText" value="<%= book.choiceBText[PAGEID - 1] %>">
         <input type="text" name="choiceB" id="choiceB" value="<%=book.choiceB[i-1]%>" hidden>
     </label>
+
+    <label for="end">
+        Is this page a DEADEND ?
+        <input type="checkbox" name="end" id="end">
+    </label>
     <% if (PAGEID < book.pagesMax) {%>
         <input type="checkbox" name="complete" id="complete" hidden>
         <input type="submit" value="Next Page">

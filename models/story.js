@@ -11,6 +11,7 @@ const newStory = new Schema({
     choiceAText: { type: Array },
     choiceB: { type: Array },
     choiceBText: { type: Array },
+    end: { type: Array },
     private: { type: Boolean, default: true},
     belongsTo: { type: String },
     complete: { type: Boolean, default: false}, 

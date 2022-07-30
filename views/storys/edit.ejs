@@ -1,0 +1,47 @@
+<%-  include('../partials/userHead') %>
+<%-  include('../partials/userHeader') %>
+
+///////////DELETE ME//////////////*
+book -> current Book
+page -> current page (literal)
+story -> current story
+STORYID -> URI first variable. Story ID
+PAGEID -> URI second varialbe. Current page
+
+*/////////////////////////////////
+
+
+<h1><%= story.title %></h1>
+
+<h3> Page <%= PAGEID %> </h3>
+
+<form action="" method="post">
+
+    <label for="pages">
+        Content to be shown
+    <textarea name="pages" id="pages" cols="30" rows="10" value="<%= page.content%>"><%= page.content %></textarea>
+    </label>
+
+    <label for="choiceAText">
+        Text for first choice
+        <input type="text" name="choiceAText" id="choiceAText" value="<%= book.choiceAText[PAGEID - 1] %>">
+        <input type="text" name="choiceA" id="choiceA" value="<%=book.choiceA[i-1]%>" hidden>
+    </label>
+
+    <label for="choiceBText">
+        Text for second choice
+        <input type="text" name="choiceBText" id="choiceBText" value="<%= book.choiceBText[PAGEID - 1] %>">
+        <input type="text" name="choiceB" id="choiceB" value="<%=book.choiceB[i-1]%>" hidden>
+    </label>
+    <% if (PAGEID < book.pagesMax) {%>
+        <input type="submit" value="Next Page">
+        <%} else { %>
+            <input type="submit" value="Finalize">
+        <% } %>
+</form>
+
+
+
+
+
+<%- include('../partials/userFooter') %>

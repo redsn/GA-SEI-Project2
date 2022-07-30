@@ -16,26 +16,26 @@
 
     <h4>Choice A</h4>
     <input type="text" name="choiceAText" id="choiceAText"  placeholder="Go Home">
-    <h4>Destination A</h4>
+    <h4>Destination A: Page Number</h4>
     <select name="choiceA" id="choiceA">
-        <% page.forEach( result => { %>
-            <% if(user.favorites.includes(result.id)){ %>
-                <option value="<%=result.id%>"><%=result.eventName%></option>
-            <% } %>
-        <% }) %>
+        <% for(i=0; i < book.pagesMax; i ++ ){%>
+            <option value="<%= i -1%>">Page <%= i + 1 %></option>
+        <%}%>
     </select>
 
     <h4>Choice B</h4>
     <input type="text" name="choiceBText" id="choiceBText" placeholder="Face your fears">
-    <h4>Destination B</h4>
+    <h4>Destination B: Page Number</h4>
     <select name="choiceB" id="choiceB">
-        <% page.forEach( result => { %>
-            <% if(user.favorites.includes(result.id)){ %>
-                <option value="<%=result.id%>"><%=result.eventName%></option>
-            <% } %>
-        <% }) %>
+        <% for(i=0; i < book.pagesMax; i ++) { %>
+            <option value="<%= i -1%>">Page <%= i + 1 %></option>
+        <%}%>
     </select>
-    <input type="submit" value="TEST">
+    <% if (place < book.pagesMax ) { %>
+    <input type="submit" value="Next Page">
+<% } else { %>
+    <input type="submit" value="Complete">
+    <% } %>
     </form>
 </div>
 

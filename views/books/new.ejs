@@ -3,6 +3,7 @@
 <h1>Making a Story</h1>
 <div>
 
+    <p>If you want this page to be an endpoint, type end into one of the choices. Adapt later on</p>
     <h3>Page <%=place%> of <%=book.pagesMax%></h3>
     <form action="/book/create/<%=bookID%>/<%=place%>?_method=PUT" method="post">
     <h4> Page Name </h4>
@@ -20,7 +21,7 @@
     <select name="choiceA" id="choiceA">
         <option value="Do Nothing">Do Nothing</option>
         <% for(i=0; i < book.pagesMax; i ++ ){%>
-            <option value="<%= i %>">Page <%= i + 1 %></option>
+            <option value="<%= i + 1 %>">Page <%= i + 1 %></option>
         <%}%>
     </select>
 
@@ -30,7 +31,7 @@
     <select name="choiceB" id="choiceB">
         <option value="Do Nothing">Do Nothing</option>
         <% for(i=0; i < book.pagesMax; i ++) { %>
-            <option value="<%= i %>">Page <%= i + 1 %></option>
+            <option value="<%= i + 1 %>">Page <%= i + 1 %></option>
         <%}%>
     </select>
     <% if (place < book.pagesMax ) { %>

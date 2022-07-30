@@ -1,0 +1,18 @@
+<%- include('../partials/userHead') %>
+<%- include('../partials/userHeader') %>
+<div>
+    <h2><%=story.title%> <span>by <%=story.author%></span></h2>
+    <div>
+        <%=story.pages[bookmark -1]%>
+    </div>
+    <% if(story.end[parseInt(bookmark) - 1] || story.pagesMax === parseInt(bookmark)){ %>
+        <a href="/">END</a>
+    <% } else if(story.choiceA[parseInt(bookmark - 1)] === "Do Nothing" || story.choiceB[parseInt(bookmark - 1)] === "Do Nothing") { %>
+        <a href="/story/view/<%=story.id%>/<%=parseInt(bookmark) + 1%>">Next Page</a>
+    <% } else { %>
+        <a href="/story/view/<%=story.id%>/<%= story.choiceA[parseInt(bookmark)-1]%>"><%= story.choiceAText[parseInt(bookmark)-1] %></a>
+        <a href="/story/view/<%=story.id%>/<%=story.choiceB[parseInt(bookmark)-1]%>"><%= story.choiceBText[parseInt(bookmark)-1] %></a>
+    <% } %>
+</div>
+
+<%- include('../partials/userFooter') %>

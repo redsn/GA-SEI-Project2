@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const newStory = new Schema({
     bookID: { type: String },
     title: { type: String },
+    author: { type: String },
     pagesMax: { type: Number },
     pages: { type: Array },
     choiceA: { type: Array },

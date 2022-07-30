@@ -7,6 +7,11 @@
 
     <h3> Would you like to make this publically available?</h3>
     <form action="/story/new" method="post">
+        <label for="author">
+            Written By:
+            <input type="text" name="author" id="author" placeholder="Some person maybe">
+        </label>
+
         <input type="text" name="private" id="private" value="false" hidden>
         <input type="tel" name="title" id="title" value="<%=book.title%>" hidden>
         <input type="number" name="pagesMax" id="pagesMax" value="<%=book.pagesMax%>" hidden>

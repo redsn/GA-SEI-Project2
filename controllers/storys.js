@@ -11,11 +11,20 @@ const Book = require('../models/book');
 const Story = require('../models/story');
 
 // INDEX //
+storyRouter.get('/index', (req,res) => {
+    Story.find({}, (err, findStory)=> {
+        res.render('./storys/index.ejs', {
+            story: findStory
+        })
+    })
+})
 
 
 // NEW //
 storyRouter.post('/new', (req,res) => {
-    console.log(req.body)
+    if(!req.body.author){
+        req.body.author = 'anonymous'
+    }
     Story.create(req.body, (err, newStory) => {
         if(err){
             res.redirect('/');
@@ -29,12 +38,14 @@ storyRouter.post('/new', (req,res) => {
 
 // UPDATE //
 storyRouter.put('/final/:storyID/:page', (req,res)=> {
-    console.log(req.body);
     if(req.body.complete === 'on'){
         req.body.complete = true
     };
-    console.log(req.body.complete)
+    if(req.body.complete === 'off'){
+        req.body.complete = false
+    }
     Story.findByIdAndUpdate(req.params.storyID, {
+        complete: req.body.complete,
         $push: {
             pages: req.body.pages,
             choiceA: req.body.choiceA,
@@ -68,8 +79,6 @@ storyRouter.get('/final/:storyID/:page', (req,res) => {
 Story.findById(req.params.storyID, (err, findStory)=>{
     Book.findById(findStory.bookID, (err, indexBook) => {
 
-        console.log(`indexBook: ${indexBook}`)
-
         Page.findById(indexBook.pages[req.params.page - 1], (err, currentPage) => {
 
                 res.render('./storys/edit.ejs', {
@@ -86,6 +95,13 @@ Story.findById(req.params.storyID, (err, findStory)=>{
 })
 
 // SHOW //
+storyRouter.get('/view/:storyID', (req,res) => {
+    Story.findById(req.params.storyID, (err, currentStory)=>{
+        res.render('./storys/show.ejs', {
+            story: currentStory
+        })
+    })
+})
 
 
 // EXPORT //

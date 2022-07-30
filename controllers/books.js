@@ -34,6 +34,19 @@ bookRouter.get('/collection', (req,res) => {
     })
 })
 
+// CONFIRM BOOK //
+bookRouter.get('/confirm/:id', (req,res) => {
+    Book.findById(req.body.id, (err, confirmBook) => {
+        if(err){
+            res.redirect('/') /// BUILD A 404
+        } else {
+            res.render('./books/confirm.ejs', {
+                book: confirmBook
+            })
+        }
+    })
+})
+
 /// INDEX : Book Parameter ///
 bookRouter.get('/init', (req,res) => {
     if(req.session.user){
@@ -76,9 +89,9 @@ bookRouter.put('/create/:bookID/:pageNumber', (req,res) => {
         $push: {
             pages: req.body.pages,
             choiceA: req.body.choiceA,
-            choiceAText: req.body.choiceAText || 'default text',
+            choiceAText: req.body.choiceAText || 'Plot Hole',
             choiceB: req.body.choiceB,
-            choiceBText: req.body.choiceBText || 'default text'
+            choiceBText: req.body.choiceBText || 'Deus Ex Machina'
         }
     },
     (err, pass) => {
@@ -87,7 +100,9 @@ bookRouter.put('/create/:bookID/:pageNumber', (req,res) => {
         } else if(req.params.pageNumber < pass.pagesMax) {
             res.redirect(`/book/create/${req.params.bookID}/${parseInt(req.params.pageNumber) + 1}`)
         } else {
-            res.send(pass)
+            res.redirect(`/book/confirm/${pass.id}`, {
+                book: pass
+            })
         }
     }
     )

@@ -4,8 +4,7 @@
 <div>
 
     <h3>Page <%=place%> of <%=book.pagesMax%></h3>
-
-
+    <form action="/book/create/<%=bookID%>/<%=place%>?_method=PUT" method="post">
     <h4> Page Name </h4>
     <select name="pages" id="pages">    
         <% page.forEach( result => { %>
@@ -16,7 +15,7 @@
     </select>
 
     <h4>Choice A</h4>
-    <input type="text" name="choiceAText" id="choiceAText">
+    <input type="text" name="choiceAText" id="choiceAText"  placeholder="Go Home">
     <h4>Destination A</h4>
     <select name="choiceA" id="choiceA">
         <% page.forEach( result => { %>
@@ -27,7 +26,7 @@
     </select>
 
     <h4>Choice B</h4>
-    <input type="text" name="choiceBText" id="choiceBText">
+    <input type="text" name="choiceBText" id="choiceBText" placeholder="Face your fears">
     <h4>Destination B</h4>
     <select name="choiceB" id="choiceB">
         <% page.forEach( result => { %>
@@ -36,7 +35,8 @@
             <% } %>
         <% }) %>
     </select>
-
+    <input type="submit" value="TEST">
+    </form>
 </div>
 
 <%- include('../partials/userFooter') %>

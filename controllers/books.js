@@ -55,6 +55,7 @@ bookRouter.get('/create/:bookID/:pageNumber', (req,res) => {
                     res.render('./books/new.ejs', {
                         //// OBJECTS TO PASS ////
                         book: currentBook,
+                        bookID: req.params.bookID,
                         place: req.params.pageNumber,
                         user: currentUser,
                         page: allPages,
@@ -65,6 +66,31 @@ bookRouter.get('/create/:bookID/:pageNumber', (req,res) => {
         })
     })
     }
+})
+
+/////// POST /// PUT for BOOK GEN /////
+bookRouter.put('/create/:bookID/:pageNumber', (req,res) => {
+    // res.send(req.body);
+    // console.log(`Pages: ${req.body.pages}`)
+    Book.findByIdAndUpdate(req.params.bookID, {
+        $push: {
+            pages: req.body.pages,
+            choiceA: req.body.choiceA,
+            choiceAText: req.body.choiceAText || 'default text',
+            choiceB: req.body.choiceB,
+            choiceBText: req.body.choiceBText || 'default text'
+        }
+    },
+    (err, pass) => {
+        if(err){
+            res.send(err, req.body)
+        } else if(req.params.pageNumber < pass.pagesMax) {
+            res.redirect(`/book/create/${req.params.bookID}/${parseInt(req.params.pageNumber) + 1}`)
+        } else {
+            res.send(pass)
+        }
+    }
+    )
 })
 
 // NEW //
@@ -88,6 +114,7 @@ bookRouter.get('/new/:idx', (req,res) => {
         }
     })
 })
+
 
 // DELETE //
 

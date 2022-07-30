@@ -98,6 +98,14 @@ storyRouter.get('/view/:storyID', (req,res) => {
     })
 })
 
+storyRouter.get('/view/:storyID/:page', (req,res) => {
+    Story.findById(req.params.storyID, (err, readStory) => {
+        res.render('./storys/read.ejs', {
+            story: readStory,
+            bookmark: req.params.page
+        })
+    })
+})
 
 // EXPORT //
 module.exports = storyRouter;

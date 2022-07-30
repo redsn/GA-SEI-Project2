@@ -1,4 +1,8 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 
+<h1><%= story.title %></h1>
+<h3>By <%= story.author%></h3>
+<a href="/story/view/<%=story.id%>/1">Start Reading</a>
+
 <%- include('../partials/userFooter') %>

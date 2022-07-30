@@ -166,7 +166,13 @@ bookRouter.post('/init', (req,res) => {
 // EDIT //
 
 // SHOW //
-
+bookRouter.get('/:bookID', (req,res) => {
+    Book.findById(req.params.bookID, (err, findBook) => {
+        res.render('./books/show.ejs', {
+            book: findBook
+        })
+    })
+})
 
 /// EXPORTS ///
 module.exports = bookRouter;

@@ -51,9 +51,10 @@ pageRouter.put('/:idx', (req,res) => {
 pageRouter.post('/', (req,res) => {
     if(!req.session.user){
         req.body.belongsTo = 'public';
-        req.body.createdBy = 'An Author'
+        req.body.createdBy = 'anonymous'
     } else {
         req.body.belongsTo = req.session.user
+        req.body.createdBy = 'Registered Author'
     }
     Page.create(req.body, (err, newPage) => {
         if(err){

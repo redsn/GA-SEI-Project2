@@ -3,7 +3,9 @@
 <h1><%= page.eventName %></h1>
 <h4>Written By: <%= page.createdBy %></h4>
 <p><%= page.content %></p>
+<% if(user){%>
 <a href="/pages/<%= page._id %>/edit">Edit this Entry</a>
+<%}%>
 
 <!-- DELETE Same as update -->
 <form action="/pages/<%= page._id %>?_method=DELETE" method="post">

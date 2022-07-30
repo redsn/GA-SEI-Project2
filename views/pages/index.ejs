@@ -3,18 +3,18 @@
 
 <a href="/pages/new">Make a new Page</a>
 <!-- defines start and end points for number of entries displayed on a page -->
-<% let start = ((part - 1)*10); let end = ((part * 10) - 1);%>
+<% let start = ((part - 1)*10); let end = ((part * 10));%>
 
 <!-- defines page point for every 10 entries, may be adjusted later-->
 <% let totalPages = Math.ceil(pages.length / 10)%>
 
 <!-- checks for end limit to avoid errors -->
 <% if(end > pages.length){ %>
-    <% end = pages.length - 1 %>
-<%} %>
+    <% end = pages.length %>
+<%}%>
 
 <!-- Start of entry generation -->
-<% for (i = start; i < end +1; i++){ %>
+<% for (i = start; i < end; i++){ %>
     <h1><%= pages[i].eventName %></h1>
         Created By: <%=pages[i].createdBy %>
         <% if(user){ %>

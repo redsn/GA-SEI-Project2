@@ -1,21 +1,11 @@
 <%-  include('../partials/userHead') %>
 <%-  include('../partials/userHeader') %>
 
-///////////DELETE ME//////////////*
-book -> current Book
-page -> current page (literal)
-story -> current story
-STORYID -> URI first variable. Story ID
-PAGEID -> URI second varialbe. Current page
-
-*/////////////////////////////////
-
-
 <h1><%= story.title %></h1>
 
 <h3> Page <%= PAGEID %> </h3>
 
-<form action="" method="post">
+<form action="/story/final/<%= STORYID %>/<%= PAGEID %>?_method=PUT" method="post">
 
     <label for="pages">
         Content to be shown
@@ -34,8 +24,10 @@ PAGEID -> URI second varialbe. Current page
         <input type="text" name="choiceB" id="choiceB" value="<%=book.choiceB[i-1]%>" hidden>
     </label>
     <% if (PAGEID < book.pagesMax) {%>
+        <input type="checkbox" name="complete" id="complete" hidden>
         <input type="submit" value="Next Page">
         <%} else { %>
+            <input type="checkbox" name="complete" id="complete" checked hidden>
             <input type="submit" value="Finalize">
         <% } %>
 </form>

@@ -18,8 +18,9 @@
     <input type="text" name="choiceAText" id="choiceAText"  placeholder="Go Home">
     <h4>Destination A: Page Number</h4>
     <select name="choiceA" id="choiceA">
+        <option value="Do Nothing">Do Nothing</option>
         <% for(i=0; i < book.pagesMax; i ++ ){%>
-            <option value="<%= i -1%>">Page <%= i + 1 %></option>
+            <option value="<%= i %>">Page <%= i + 1 %></option>
         <%}%>
     </select>
 
@@ -27,8 +28,9 @@
     <input type="text" name="choiceBText" id="choiceBText" placeholder="Face your fears">
     <h4>Destination B: Page Number</h4>
     <select name="choiceB" id="choiceB">
+        <option value="Do Nothing">Do Nothing</option>
         <% for(i=0; i < book.pagesMax; i ++) { %>
-            <option value="<%= i -1%>">Page <%= i + 1 %></option>
+            <option value="<%= i %>">Page <%= i + 1 %></option>
         <%}%>
     </select>
     <% if (place < book.pagesMax ) { %>

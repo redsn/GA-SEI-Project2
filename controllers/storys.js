@@ -28,6 +28,33 @@ storyRouter.post('/new', (req,res) => {
 // DELETE //
 
 // UPDATE //
+storyRouter.put('/final/:storyID/:page', (req,res)=> {
+    console.log(req.body);
+    if(req.body.complete === 'on'){
+        req.body.complete = true
+    };
+    console.log(req.body.complete)
+    Story.findByIdAndUpdate(req.params.storyID, {
+        $push: {
+            pages: req.body.pages,
+            choiceA: req.body.choiceA,
+            choiceAText: req.body.choiceAText || 'Plot Hole',
+            choiceB: req.body.choiceB,
+            choiceBText: req.body.choiceBText || 'Deus Ex Machina'
+        },
+        
+    },
+    (err,pass) => {
+        if(err){
+            res.redirect('/')
+        }else if(req.params.page < pass.pagesMax){
+            res.redirect(`/story/final/${req.params.storyID}/${parseInt(req.params.page)+ 1}`)
+        } else {
+            res.redirect('/')
+        }
+    }
+    )
+})
 
 
 // CREATE //
@@ -43,7 +70,7 @@ Story.findById(req.params.storyID, (err, findStory)=>{
 
         console.log(`indexBook: ${indexBook}`)
 
-        Page.findById(indexBook.pages[req.params.page], (err, currentPage) => {
+        Page.findById(indexBook.pages[req.params.page - 1], (err, currentPage) => {
 
                 res.render('./storys/edit.ejs', {
                     book: indexBook,

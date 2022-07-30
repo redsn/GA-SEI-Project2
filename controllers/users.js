@@ -62,7 +62,6 @@ userRouter.post('/register', (req,res) => {
             res.render('./user/new.ejs', {err: 'Login data invalid'})
         } else {
             req.session.newUser = newUser._id;
-            console.log(newUser)
             res.redirect(`/user/home`)
         }
     })

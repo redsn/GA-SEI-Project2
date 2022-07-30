@@ -7,9 +7,13 @@
 
     <h3> Would you like to make this publically available?</h3>
     <form action="/story/new" method="post">
+        <input type="text" name="private" id="private" value="false" hidden>
+        <input type="tel" name="title" id="title" value="<%=book.title%>" hidden>
+        <input type="number" name="pagesMax" id="pagesMax" value="<%=book.pagesMax%>" hidden>
         <input type="text" name="bookID" id="bookID" value="<%=book.id%>" hidden>
-        <input type="submit" value="TEST">
+        <input type="submit" value="Sure!">
     </form>
+    <a href="/">No Thanks</a>
 </div>
 
 <%- include('../partials/userFooter') %>

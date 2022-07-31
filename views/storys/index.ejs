@@ -1,7 +1,6 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <% story.forEach( result => { %>
-    <% console.log(result) %>
     <% if(result.private === false){ %>
         <h1><%= result.title%></h1>
         <a href="/story/view/<%= result.id %>">Start reading now</a>

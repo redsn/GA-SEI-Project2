@@ -1,8 +1,16 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <form action="/user/login" method="post">
+    <label for="userEmail">
+        Email:
     <input type="email" name="userEmail" id="userEmail" placeholder="Email">
+    </label>
+
+    <label for="userPassword">
+        Password:
     <input type="password" name="userPassword" id="userPassword" placeholder="Password">
+    </label>
+
     <input type="submit" value="Log In">
 </form>
 <a href="/user/new">Create an Account</a>

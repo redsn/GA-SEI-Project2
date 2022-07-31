@@ -1,0 +1,65 @@
+:root{
+
+    --clr-100: #858DFF;
+    --clr-200: #1D3461;
+    --clr-300: #1F487E;
+    --clr-400: #eff2ef;
+    --clr-500: #519E8A;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    background-color: red;
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.miniNav{
+    background-color:pink;
+    /* display:flex; */
+    /* justify-content: space-around; */
+}
+
+.toptext{
+    display:block
+}
+
+nav{
+    display:flex;
+    justify-content: end;
+}
+
+body{
+    display:flex;
+    flex-direction: column;
+    height:  100vh;
+    background-color: green;
+    /* padding-top: 10vh; */
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5vh;  
+}
+
+footer,
+header{
+    display:flex;
+    align-items: center;
+    width: 100%;
+}
+
+footer{
+    background-color: yellow;
+    flex-direction: column;
+}

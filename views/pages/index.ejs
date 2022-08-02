@@ -1,6 +1,6 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
-
+<div class="mainCont">
 <a href="/pages/new">Make a new Page</a>
 <!-- defines start and end points for number of entries displayed on a page -->
 <% let start = ((part - 1)*10); let end = ((part * 10));%>
@@ -15,19 +15,21 @@
 
 <!-- Start of entry generation -->
 <% for (i = start; i < end; i++){ %>
-    <h1><%= pages[i].eventName %></h1>
-        Created By: <%=pages[i].createdBy %>
+    <div class="pageindexitem">
+    <h2><%= pages[i].eventName %></h2>
+        <p> Created By: <%=pages[i].createdBy %> </p>
         <% if(user){ %>
         <form action="/book/new/addpage/<%= pages[i]._id %>" method="post">
             <!-- <input type="text" name="name" id="name" disabled class="hideMe" value="<%=pages[i].eventName%>">
             <input type="text" name="page" id="page" disabled class="hideMe" value="<%= part %>"> -->
             <label for="submit">
             Add to Library
-            <input type="submit" value="+">
+            <input type="submit" value="+" class="viewme">
             </label>
         </form>
         <% } %>
-        <a href="/pages/<%=pages[i]._id%>">View this Page</a>
+        <a href="/pages/<%=pages[i]._id%>" class="navButton">View this Page</a>
+    </div>
 <%}%>
 
 <!-- Page loop, for total entries-->
@@ -36,5 +38,5 @@
     <a href="/pages/all/<%=i%>"><%=i%></a>
 <%}%>
 <p>Page <%= part %></p>
-
+</div>
 <%- include('../partials/userFooter') %>

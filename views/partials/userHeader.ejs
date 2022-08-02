@@ -1,19 +1,17 @@
+
 <header class="navbar">
-    <nav>
-        <a href="/"><h2>ChooseADV</h2></a>
-    </br>
-    <br/>
+    <nav class="mainNav">
+        <a href="/" class="toptext"><h2>ChooseADV</h2></a>
     <div class="miniNav">            
             <% if(user) { %>
-            <a href="/user/home">Profile</a>
-            <a href="/user/logout">Log-Out</a>
+            <a href="/user/home" class="navButton">Profile</a>
+            <a href="/user/logout" class="navButton">Log-Out</a>
             <% } else { %>
-            <a href="/user/login">Log-In</a>
+            <a href="/user/login" class="navButton">Log-In</a>
             <% } %>
-            <a href="/">Home</a>
-            <a href="/pages/all/1">Pages</a>
-            <a href="/book">Books</a>
-            <a href="/story/index">Stories</a>
+            <a href="/pages/all/1" class="navButton">Pages</a>
+            <a href="/book" class="navButton">Books</a>
+            <a href="/story/index" class="navButton">Stories</a>
     </div>
     </nav>
 </header>

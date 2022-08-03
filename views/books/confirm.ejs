@@ -1,7 +1,7 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
-
-<div>
+<div class="mainCont">
+<div class="bookParam">
     <h1><%= book.title %></h1>
     <p>Has been sucessfully bound and saved to your library</p>
 
@@ -18,7 +18,7 @@
         <input type="text" name="bookID" id="bookID" value="<%=book.id%>" hidden>
         <input type="submit" value="Sure!">
     </form>
-    <a href="/">No Thanks</a>
+    <a href="/" class="auto1">No Thanks</a>
 </div>
-
+</div>
 <%- include('../partials/userFooter') %>

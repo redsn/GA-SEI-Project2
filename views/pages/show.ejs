@@ -1,6 +1,7 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <div class="mainCont">
+    <div class="bookParam">
 <h1><%= page.eventName %></h1>
 <h4>Written By: <%= page.createdBy %></h4>
 <p><%= page.content %></p>
@@ -13,14 +14,15 @@
 
         <%if(page.belongsTo === user || page.belongsTo === 'public') {%>
         <label for="submit">
-            <input type="submit" value="DELETE">
+            <input type="submit" value="DELETE" class="auto1">
         </label>
         <% } else { %>
         <label for="submit">
             <p class="warn">You cannot delete this entry</p>
-        <input type="submit" value="DELETE" disabled>
+        <input type="submit" value="DELETE" class="auto1" disabled>
         <% } %>
     
 </form>
+</div>
 </div>
 <%- include('../partials/userFooter') %>

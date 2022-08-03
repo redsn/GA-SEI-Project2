@@ -1,7 +1,7 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <div class="mainCont">
-
+<div class="bookParam">
 <h1> Book Parameters</h1>
 
 <form action="/book/init" method="post">
@@ -10,21 +10,22 @@
         Title:
         <input type="text" name="title" id="title" placeholder="Name of Book">
     </label>
-
+</br>
     <label for="pagesMax">
         Number of Pages: (3-10)
         <input type="number" name="pagesMax" id="pagesMax" min="3" max="10" value="5">
     </label>
-
+</br>
     <label for="private">
         Make this Public ?
         <input type="checkbox" name="private" id="private">
     </label>
-
+</br>
     <label for="submit">
         <input type="submit" value="Start!">
     </label>
 
 </form>
+</div>
 </div>
 <%- include('../partials/userFooter') %>

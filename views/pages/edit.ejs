@@ -1,6 +1,7 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <div class="mainCont">
+    <div class="bookParam">
 <form action="/pages/<%= page._id %>?_method=PUT" method="post">
     <label for="eventName">
         Name of Chapter:
@@ -19,15 +20,15 @@
 
     <% if(page.belongsTo === user || page.belongsTo === 'public') {%>
     <label for="submit">
-        <input type="submit" value="Update">
+        <input type="submit" value="Update" class="auto1">
     </label>
     <% } else { %>
     <label for="submit">
         <p class="warn">You cannot edit this entry</p>
-    <input type="submit" value="Update" disabled>
+    <input type="submit" value="Update" class="auto1" disabled>
     <% } %>
 
     </form>
-</form>
+</div>
 </div>
 <%- include('../partials/userFooter') %>

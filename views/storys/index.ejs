@@ -1,11 +1,15 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <div class="mainCont">
+    <div class="bookParam">
 <% story.forEach( result => { %>
     <% if(result.private === false){ %>
+        <div class="pageindexitem">
         <h1><%= result.title%></h1>
-        <a href="/story/view/<%= result.id %>">Start reading now</a>
+        <a href="/story/view/<%= result.id %>" class="navButton">Start reading now</a>
     <% } %>
+    </div>
 <% }) %>
+    </div>
     </div>
 <%- include('../partials/userFooter') %>

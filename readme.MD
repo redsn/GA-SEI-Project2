@@ -10,11 +10,15 @@ A Full-Stack app that takes user input and creates a mini-adventure story
 * HTML 5
 * MongoDB
 * Javascript
+* AI Dungeon
 
 # Screenshots
 ## Concept: 
 ![Poor Drawing 1](images/markdown/Page1.jpg)
 ![Poor Drawing 2](images/markdown/Page2.jpg)
+![Page Index](images/markdown/pageindex.png)
+![Page Show](images/markdown/pageshow.png)
+![Story Read](images/markdown/storyread.png)
 
 # Getting Started
 

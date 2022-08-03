@@ -17,7 +17,8 @@ app.use(methodOverride('_method'));
 
 // Server Config
 const PORT = process.env.PORT || 3000; /// Change with .env var later
-const { DATABASE_CONNECT, secret } = process.env;
+// const { DATABASE_CONNECT, secret } = process.env;
+const DATABASE_CONNECT = process.env.DATABASE_CONNECT;
 mongoose.connect(DATABASE_CONNECT)
 const db = mongoose.connection;
 db.on('error', (err) => {
@@ -67,4 +68,4 @@ app.use('/book', bookRouter); // 'book' route
 app.use('/story', storyRouter); // 'story' route
 
 /// Listener ///
-app.listen(PORT, console.log(`Application loaded on port: ${PORT}`));
+app.listen(process.env.PORT || 3000, console.log(`Application loaded on port: ${PORT}`));

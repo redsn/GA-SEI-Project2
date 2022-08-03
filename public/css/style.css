@@ -47,7 +47,9 @@
     /* margin: 0 5px; */
     padding: 0 10px;
     background-color: var(--clr-200);
-    color: var(--clr-400)
+    color: var(--clr-400);
+    text-decoration: none;
+    border: 1px solid #0e1d39;
 }
 
 .navButton:hover{
@@ -135,6 +137,32 @@ body{
 .pageNew *{
     /* padding: 10px; */
     margin: 5px;
+}
+
+.bookIndex{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin: 2vh auto;
+    width: 80%;
+    padding: 2vh;
+    /* width: fit-content */
+}
+
+.auto1{
+    color: var(--clr-400);
+    background-color: var(--clr-300);
+    text-decoration: none;
+    width: fit-content;
+    padding: 5px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 2vh;;
+}
+
+.auto2{
+margin-top: 3vh;
 }
 /*
 .navbar{

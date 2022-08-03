@@ -1,12 +1,16 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <div class="mainCont">
-<a href="book/init">Start a new Book</a>
+    <div class="bookIndex">
+<a href="book/init" class="auto1">Start a new Book</a>
 <% book.forEach(books => { %>
+    <div class="pageindexitem">
     <a href="book/<%= books._id %>"><h1><%=  books.title %></h1></a>
+    </div>
 <%})%>
 <% if (user) { %>
-<a href="book/collection/">My Collection</a>
+<a href="book/collection/" class="auto1 auto2">My Collection</a>
 <% } %>
+</div>
 </div>
 <%- include('../partials/userFooter') %>

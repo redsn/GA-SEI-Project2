@@ -24,7 +24,7 @@ userRouter.get('/logout', (req,res) => {
 // POST //
 userRouter.post('/login', (req,res) => {
     User.findOne({ userEmail: req.body.userEmail }, '+password', (err, findUser) => {
-        if(!findUser) return res.send(req.body);
+        if(!findUser) return res.redirect("/");
         // console.log(`Req: ${req.body.userPassword}, Database: ${findUser.userPassword}, hashcheck: ${bcrypt.compareSync(req.body.userPassword, findUser.userPassword)}`)
         // console.log(`Req: ${req.body.userPassword}, Database: ${bcrypt.hashSync(req.body.userPassword, bcrypt.genSaltSync(SALT))}`)
         if(!bcrypt.compareSync(req.body.userPassword, findUser.userPassword)){

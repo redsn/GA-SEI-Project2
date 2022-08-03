@@ -8,9 +8,11 @@ A Full-Stack app that takes user input and creates a mini-adventure story
 
 # Technologies Used
 * HTML 5
+* CSS
 * MongoDB
 * Javascript
 * AI Dungeon
+* Node.js
 
 # Screenshots
 ## Concept: 

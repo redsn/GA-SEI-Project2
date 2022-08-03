@@ -56,7 +56,7 @@ storyRouter.put('/final/:storyID/:page', (req,res)=> {
         }else if(req.params.page < pass.pagesMax){
             res.redirect(`/story/final/${req.params.storyID}/${parseInt(req.params.page)+ 1}`)
         } else {
-            res.redirect('/')
+            res.redirect('/story/index')
         }
     }
     )

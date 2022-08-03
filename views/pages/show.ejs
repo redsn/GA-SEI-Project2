@@ -4,7 +4,9 @@
     <div class="bookParam">
 <h1><%= page.eventName %></h1>
 <h4>Written By: <%= page.createdBy %></h4>
+<div class="viewAsPage">
 <p><%= page.content %></p>
+</div>
 <% if(user){%>
 <a href="/pages/<%= page._id %>/edit">Edit this Entry</a>
 <%}%>

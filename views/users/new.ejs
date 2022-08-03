@@ -1,7 +1,7 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <div class="mainCont">
-
+<div class="bookParam">
     <h1>New User</h1>
     <form action="/user/register" method="post">
 
@@ -14,15 +14,16 @@
             Email Address:
             <input type="email" name="userEmail" id="userEmail" placeholder="email">
         </label>
-
+    </br>
         <label for="userPassword">
             Password:(min. 6 characters)
             <input type="password" name="userPassword" id="userPassword" placeholder="Password">
         </label>
 
         <label for="SEND">
-            <input type="submit" value="SEND">
+            <input type="submit" value="Create an Account" class="navButton">
         </label>
     </form>
+    </div>
 </div>
     <%- include('../partials/userFooter') %>

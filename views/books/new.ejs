@@ -1,8 +1,9 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <div class="mainCont">
+    <div class="bookParam">
 <h1>Making a Story</h1>
-<div class="bookParam">
+
 
     <p>If you want this page to be an endpoint, type end into one of the choices. Adapt later on</p>
     <h3>Page <%=place%> of <%=book.pagesMax%></h3>
@@ -36,9 +37,9 @@
         <%}%>
     </select>
     <% if (place < book.pagesMax ) { %>
-    <input type="submit" value="Next Page">
+    <input type="submit" value="Next Page" class="navButton">
 <% } else { %>
-    <input type="submit" value="Complete">
+    <input type="submit" value="Complete" class="navButton">
     <% } %>
     </form>
 </div>

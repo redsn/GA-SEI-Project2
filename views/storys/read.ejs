@@ -5,7 +5,9 @@
     <h2><%=story.title%></h2>
     <span>by <p class="author"><%=story.author%></p></span>
     <div class="viewAsPage">
+        <span class="pageTitle"><%=story.title%></span>
         <p><%=story.pages[bookmark -1]%></p>
+        <span class="pageNumber"><%= bookmark %></span>
     </div>
     <% if(story.end[parseInt(bookmark) - 1] || story.pagesMax === parseInt(bookmark)){ %>
         <a href="/story/index" class="navButton">Back To Index</a>

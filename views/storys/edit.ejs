@@ -1,7 +1,7 @@
 <%-  include('../partials/userHead') %>
 <%-  include('../partials/userHeader') %>
 <div class="mainCont">
-
+<div class="storyEdit">
 <h1><%= story.title %></h1>
 
 <h3> Page <%= PAGEID %> </h3>
@@ -9,35 +9,35 @@
 <form action="/story/final/<%= STORYID %>/<%= PAGEID %>?_method=PUT" method="post">
 
     <label for="pages">
-        Content to be shown
-    <textarea name="pages" id="pages" cols="30" rows="10" value="<%= page.content%>"><%= page.content %></textarea>
+        Content to be shown </br></br>
+    <textarea name="pages" id="pages" cols="30" rows="10" value="<%= page.content%>" class="viewAsPage"><%= page.content %></textarea>
     </label>
-
+</br>
     <label for="choiceAText">
-        Text for first choice
+        Text for first choice</br>
         <input type="text" name="choiceAText" id="choiceAText" value="<%= book.choiceAText[PAGEID - 1] %>">
         <input type="text" name="choiceA" id="choiceA" value="<%=book.choiceA[PAGEID-1]%>" hidden>
     </label>
-
+</br>
     <label for="choiceBText">
-        Text for second choice
+        Text for second choice</br>
         <input type="text" name="choiceBText" id="choiceBText" value="<%= book.choiceBText[PAGEID - 1] %>">
         <input type="text" name="choiceB" id="choiceB" value="<%=book.choiceB[PAGEID-1]%>" hidden>
     </label>
-
+</br>
     <label for="end">
         Is this page a DEADEND ?
         <input type="checkbox" name="end" id="end">
     </label>
     <% if (PAGEID < book.pagesMax) {%>
         <input type="checkbox" name="complete" id="complete" hidden>
-        <input type="submit" value="Next Page">
+        <input type="submit" value="Next Page" class="navButton">
         <%} else { %>
             <input type="checkbox" name="complete" id="complete" checked hidden>
-            <input type="submit" value="Finalize">
+            <input type="submit" value="Finalize" class="navButton">
         <% } %>
 </form>
-
+</div>
 
 
 </div>

@@ -22,6 +22,8 @@ A Full-Stack app that takes user input and creates a mini-adventure story
 
 # Getting Started
 
+Deployed on Heroku [here](https://chooseadv.herokuapp.com/)
+
 # Future Enhancements
 * Add in basic combat
 * Add basic abilites that can be manipulated by the User

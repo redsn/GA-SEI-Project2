@@ -1,18 +1,19 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <div class="mainCont">
-<div>
-    <h2><%=story.title%> <span>by <%=story.author%></span></h2>
-    <div>
-        <%=story.pages[bookmark -1]%>
+<div class="bookParam">
+    <h2><%=story.title%></h2>
+    <span>by <p class="author"><%=story.author%></p></span>
+    <div class="viewAsPage">
+        <p><%=story.pages[bookmark -1]%></p>
     </div>
     <% if(story.end[parseInt(bookmark) - 1] || story.pagesMax === parseInt(bookmark)){ %>
-        <a href="/story/index">Back To Index</a>
+        <a href="/story/index" class="navButton">Back To Index</a>
     <% } else if(story.choiceA[parseInt(bookmark - 1)] === "Do Nothing" || story.choiceB[parseInt(bookmark - 1)] === "Do Nothing") { %>
-        <a href="/story/view/<%=story.id%>/<%=parseInt(bookmark) + 1%>">Next Page</a>
+        <a href="/story/view/<%=story.id%>/<%=parseInt(bookmark) + 1%>" class="navButton">Next Page</a>
     <% } else { %>
-        <a href="/story/view/<%=story.id%>/<%= story.choiceA[parseInt(bookmark)-1]%>"><%= story.choiceAText[parseInt(bookmark)-1] %></a>
-        <a href="/story/view/<%=story.id%>/<%=story.choiceB[parseInt(bookmark)-1]%>"><%= story.choiceBText[parseInt(bookmark)-1] %></a>
+        <a href="/story/view/<%=story.id%>/<%= story.choiceA[parseInt(bookmark)-1]%>" class="navButton"><%= story.choiceAText[parseInt(bookmark)-1] %></a>
+        <a href="/story/view/<%=story.id%>/<%=story.choiceB[parseInt(bookmark)-1]%>" class="navButton"><%= story.choiceBText[parseInt(bookmark)-1] %></a>
     <% } %>
 </div>
 </div>

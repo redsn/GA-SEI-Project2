@@ -197,6 +197,20 @@ margin-top: 3vh;
     color: white;
 }
 
+.viewAsPage{
+    display: flex;
+    border: 1px black solid;
+    outline: 10px grey solid;
+    height: 77vh;
+    width: 59.5vh;
+}
+
+.viewAsPage p{
+    display: flex;
+    text-align: left;
+    margin: 8vh;
+}
+
 main {
     flex: 1;
     display: flex;

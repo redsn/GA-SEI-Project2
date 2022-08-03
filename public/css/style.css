@@ -105,6 +105,12 @@ body{
 .viewme{
     width: 3vh;
     height: 3vh;
+    background-color: var(--clr-500);
+    color: var(--clr-400);
+    margin: 2vh;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px black;
 }
 .makeANewPage{
     color: var(--clr-400);
@@ -113,8 +119,11 @@ body{
     display: flex;
     width: fit-content;
     padding: 5px;
-    margin: 15px 0;
-    margin-left: 10px;
+    text-align: center;
+    margin: 2vh auto;
+    /* padding-top: 1vh; */
+    /* margin: 15px 0; */
+    /* margin-left: 10px; */
 }
 
 .pageindexitem h2,.pageindexitem label,.pageindexitem p{
@@ -249,7 +258,10 @@ margin-top: 3vh;
     font-family: var(--ff-page-100);
     font-style: italic;
 }
-
+.pageList{
+    margin: 1vh;
+    padding-bottom: 1vh;
+}
 .storyEdit{
     margin: 0 auto;
     display: flex;

@@ -34,9 +34,11 @@
 
 <!-- Page loop, for total entries-->
 <br/>
+<div class="pageList">
 <% for (i = 1; i < totalPages + 1; i++) { %>
     <a href="/pages/all/<%=i%>"><%=i%></a>
 <%}%>
 <p>Page <%= part %></p>
+</div>
 </div>
 <%- include('../partials/userFooter') %>

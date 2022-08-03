@@ -16,7 +16,7 @@ app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
 // Server Config
-const PORT = 4000; /// Change with .env var later
+const PORT = process.env.PORT || 3000; /// Change with .env var later
 const { DATABASE_CONNECT, secret } = process.env;
 mongoose.connect(DATABASE_CONNECT)
 const db = mongoose.connection;

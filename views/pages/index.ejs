@@ -1,7 +1,7 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
 <div class="mainCont">
-<a href="/pages/new">Make a new Page</a>
+<a href="/pages/new" class="makeANewPage">Make a new Page</a>
 <!-- defines start and end points for number of entries displayed on a page -->
 <% let start = ((part - 1)*10); let end = ((part * 10));%>
 
@@ -17,7 +17,7 @@
 <% for (i = start; i < end; i++){ %>
     <div class="pageindexitem">
     <h2><%= pages[i].eventName %></h2>
-        <p> Created By: <%=pages[i].createdBy %> </p>
+        <p> Created By: <p class="author"><%=pages[i].createdBy %></p> </p>
         <% if(user){ %>
         <form action="/book/new/addpage/<%= pages[i]._id %>" method="post">
             <!-- <input type="text" name="name" id="name" disabled class="hideMe" value="<%=pages[i].eventName%>">

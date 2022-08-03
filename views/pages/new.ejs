@@ -1,23 +1,27 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
+<div class="mainCont">
+    <div class="pageNew">
 <form action="/pages" method="post">
 
     <label for="eventName">
         Name of Page:
     <input type="text" name="eventName" id="eventName" placeholder="Name" required>
     </label>
-
+</br>
     <label for="createdBy">
         Author:
     <input type="text" name="createdBy" id="createdBy" placeholder="Name of Creator" required>
     </label>
-
+</br>
     <label for="content">
         Page Text:
     <textarea name="content" id="content" cols="30" rows="10"></textarea>
     </label>
 
 
-    <input type="submit" value="Send">
+    <input type="submit" value="Send" class="navButton">
 </form>
+</div>
+</div>
 <%- include('../partials/userFooter') %>

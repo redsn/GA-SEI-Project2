@@ -92,13 +92,49 @@ body{
     width: 3vh;
     height: 3vh;
 }
+.makeANewPage{
+    color: var(--clr-400);
+    background-color: var(--clr-300);
+    text-decoration: none;
+    display: flex;
+    width: fit-content;
+    padding: 5px;
+    margin: 15px 0;
+    margin-left: 10px;
+}
 
 .pageindexitem h2,.pageindexitem label,.pageindexitem p{
     text-shadow: 1px 1px black;
-    padding: 3px;
+    padding: 5px;
 }
 .pageindexitem a{
     text-decoration: none;
+}
+.author{
+    color: var(--clr-400);
+    background-color: var(--clr-500);
+    border: 1px solid #3d806e;
+}
+
+.pageNew{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    /* flex-direction: column; */
+    margin: 5vh auto;
+    width: 40%;
+    padding: 7vh;
+    border: 10px grey solid;
+    box-shadow: 2px 2px black;
+}
+
+.pageNew input{
+    padding: 5px;
+}
+
+.pageNew *{
+    /* padding: 10px; */
+    margin: 5px;
 }
 /*
 .navbar{

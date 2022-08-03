@@ -1,5 +1,6 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
+<div class="mainCont">
 <form action="/pages/<%= page._id %>?_method=PUT" method="post">
     <label for="eventName">
         Name of Chapter:
@@ -28,4 +29,5 @@
 
     </form>
 </form>
+</div>
 <%- include('../partials/userFooter') %>

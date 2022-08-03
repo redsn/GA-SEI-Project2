@@ -1,5 +1,6 @@
 <%- include('../partials/userHead') %>
 <%- include('../partials/userHeader') %>
+<div class="mainCont">
 <form action="/user/login" method="post">
     <label for="userEmail">
         Email:
@@ -14,5 +15,5 @@
     <input type="submit" value="Log In">
 </form>
 <a href="/user/new">Create an Account</a>
-
+</div>
 <%- include('../partials/userFooter') %>

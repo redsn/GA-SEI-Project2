@@ -13,6 +13,7 @@ A Full-Stack app that takes user input and creates a mini-adventure story
 * Javascript
 * AI Dungeon
 * Node.js
+* BCrypt
 
 # Screenshots
 ## Concept: 
